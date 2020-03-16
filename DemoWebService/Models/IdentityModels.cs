@@ -18,7 +18,7 @@ namespace DemoWebService.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext :IdentityDbContext<ApplicationUser>
     {
         public DbSet<User> Users { get; set; }
         public ApplicationDbContext()
