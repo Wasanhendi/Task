@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using System.Xml;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace DemoWebService
 {
@@ -18,9 +20,14 @@ namespace DemoWebService
     // [System.Web.Script.Services.ScriptService]
     public class UserWebService : System.Web.Services.WebService
     {
+        //public UserWebService() : base( )
+        //    {
+
+        //    }
         [WebMethod]
         public bool CreateUser(XElement user)   
         {
+
             using (ApplicationDbContext Db =new ApplicationDbContext()) {
                 try
                 {
@@ -48,7 +55,14 @@ namespace DemoWebService
         {
             using (ApplicationDbContext Db = new ApplicationDbContext())
             {
-                return Db.Users.ToList();
+                //XmlSerializer xs = new XmlSerializer(typeof(List<User>));
+               return  Db.Users.ToList();
+                //XDocument d = new XDocument();
+                //using (XmlWriter xw = d.CreateWriter())
+                //    xs.Serialize(xw, Listuser);
+
+                //XElement elm = d.Root;
+                //return (elm);
             }
         }
     }
